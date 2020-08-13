@@ -1,0 +1,71 @@
+.formBox {
+  width: 1000px;
+  margin: auto;
+  background-color: rgb(59, 59, 59);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.formBox div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+}
+
+label {
+  color: white;
+  padding: 10px 0px;
+}
+input {
+  color: white;
+  font-size: 20px;
+  padding-left: 8px;
+  background-color: rgb(59, 59, 59);
+  border: 1px solid white;
+  outline: none;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  padding-left: 48px;
+}
+
+button {
+  font-size: 25px;
+  align-self: center;
+  width: 200px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+
+.errorBox {
+  border: 2px solid red;
+}
+
+.thankYou {
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+  background-color: rgb(59, 59, 59);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+}
+
+a {
+  margin-top: 50px;
+}
