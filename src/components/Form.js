@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import validator from "validator"
 import "../styles/Form.css"
-import { addHero } from "../actions/heros"
+import { addHero, getCount } from "../actions/heros"
 
 export default (props) => {
 	const [firstName, setFirstName] = useState("")
@@ -84,21 +84,23 @@ export default (props) => {
 			})
 		}
 	}
+	useEffect(() => {
+		getCount()
+	}, [])
 
 	// const card = {
 	// 	suits: ["clubs", "spades", "hearts", "diamonds"],
 	// 	faces: [2, 3, 4, 5, 6, 7, 8, 9, 10],
 	// }
-
+	// let deck = []
 	// const cards = card.suits.map((suit) => {
 	// 	return card.faces.map((face) => {
-	// 		return face + " " + suit
+	// 		return deck.push(face + " " + suit)
 	// 	})
 	// })
 
-	// const deck = [...cards[0], ...cards[1], ...cards[2], ...cards[3]]
-	// console.log(cards)
 	// console.log(deck)
+	// console.log(cards)
 
 	// function makeDeck(card) {
 	// 	let cards = []
@@ -116,7 +118,7 @@ export default (props) => {
 	return (
 		<div>
 			<form onSubmit={trySubmit} className="formBox">
-				<h1>Profile Form - All Fields Required</h1>
+				<h1>Avengers Application</h1>
 				<div>
 					<label className={firstNameError ? "error" : ""} htmlFor="firstName">
 						First Name {firstNameError && firstNameError}
