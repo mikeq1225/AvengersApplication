@@ -7,10 +7,3 @@ export function addHero(hero) {
 		})
 	})
 }
-
-export function getCount() {
-	axios.get("/heros").then((resp) => {
-		const count = resp.data.length
-		console.log(count)
-	})
-}

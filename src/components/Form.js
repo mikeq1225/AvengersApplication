@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import validator from "validator"
 import "../styles/Form.css"
-import { addHero, getCount } from "../actions/heros"
+import { addHero } from "../actions/heros"
+import axios from "axios"
 
 export default (props) => {
 	const [firstName, setFirstName] = useState("")
@@ -10,14 +11,15 @@ export default (props) => {
 	const [lastNameError, setLastNameError] = useState("")
 	const [email, setEmail] = useState("")
 	const [emailError, setEmailError] = useState("")
-	const [username, setUsername] = useState("")
-	const [usernameError, setUsernameError] = useState("")
-	const [password, setPassword] = useState("")
-	const [passwordError, setPasswordError] = useState("")
-	const [confirm, setConfirm] = useState("")
-	const [confirmError, setConfirmError] = useState("")
+	const [address, setAddress] = useState("")
+	const [addressError, setAddressError] = useState("")
+	const [phone, setPhone] = useState("")
+	const [phoneError, setPhoneError] = useState("")
+	const [contactMethod, setContactMethod] = useState("phone")
+	const [gender, setGender] = useState("")
 	const [website, setWebsite] = useState("")
 	const [websiteError, setWebsiteError] = useState("")
+	const [count, setCount] = useState("")
 
 	function trySubmit(e) {
 		e.preventDefault()
@@ -44,26 +46,26 @@ export default (props) => {
 			setEmailError("")
 		}
 
-		if (!validator.isAlphanumeric(username, "en-US")) {
+		if (!validator.isAlphanumeric(address, "en-US")) {
 			valid = false
-			setUsernameError(` -- Can't be blank or have special characters`)
+			setAddressError(` -- Can't be blank or have special characters`)
 		} else {
-			setUsernameError("")
+			setAddressError("")
 		}
 
-		if (!validator.isAlphanumeric(password, "en-US")) {
+		if (!validator.isAlphanumeric(phone, "en-US")) {
 			valid = false
-			setPasswordError(` -- Can't be blank`)
+			setPhoneError(` -- Can't be blank`)
 		} else {
-			setPasswordError("")
+			setPhoneError("")
 		}
 
-		if (!validator.equals(confirm, password)) {
-			valid = false
-			setConfirmError(` -- Must match password`)
-		} else {
-			setConfirmError("")
-		}
+		// if (!validator.equals(confirm, phone)) {
+		// 	valid = false
+		// 	setConfirmError(` -- Must match phone`)
+		// } else {
+		// 	setConfirmError("")
+		// }
 
 		if (!validator.isURL(website)) {
 			valid = false
@@ -77,7 +79,7 @@ export default (props) => {
 				firstName,
 				lastName,
 				email,
-				username,
+				address,
 				website,
 			}).then(() => {
 				props.history.push("/thanks")
@@ -85,8 +87,10 @@ export default (props) => {
 		}
 	}
 	useEffect(() => {
-		getCount()
-	}, [])
+		axios.get("/heros").then((resp) => {
+			setCount(resp.data.length)
+		})
+	}, [count])
 
 	// const card = {
 	// 	suits: ["clubs", "spades", "hearts", "diamonds"],
@@ -116,86 +120,134 @@ export default (props) => {
 	// makeDeck(card)
 
 	return (
-		<div>
+		<div id="avengersApplication">
+			<h1>Avengers Application</h1>
 			<form onSubmit={trySubmit} className="formBox">
-				<h1>Avengers Application</h1>
-				<div>
-					<label className={firstNameError ? "error" : ""} htmlFor="firstName">
-						First Name {firstNameError && firstNameError}
-					</label>
-					<input
-						type="text"
-						id="firstName"
-						placeholder="ex. John"
-						className={firstNameError ? "errorBox" : ""}
-						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
-					/>
+				<div className="personalDiv">
+					<p>Personal Details</p>
+					<div className="rowsDiv">
+						<div>
+							<label
+								className={firstNameError ? "error" : ""}
+								htmlFor="firstName"
+							>
+								First Name: {firstNameError && firstNameError}
+							</label>
+							<input
+								type="text"
+								id="firstName"
+								placeholder="John"
+								className={firstNameError ? "errorBox" : ""}
+								value={firstName}
+								onChange={(e) => setFirstName(e.target.value)}
+							/>
+						</div>
+						<div>
+							<label
+								className={lastNameError ? "error" : ""}
+								htmlFor="lastName"
+							>
+								Last Name: {lastNameError && lastNameError}
+							</label>
+							<input
+								type="text"
+								id="lastName"
+								placeholder="Smith"
+								className={lastNameError ? "errorBox" : ""}
+								value={lastName}
+								onChange={(e) => setLastName(e.target.value)}
+							/>
+						</div>
+					</div>
+					<div className="rowsDiv">
+						<div>
+							<label className={emailError ? "error" : ""} htmlFor="email">
+								Email: {emailError && emailError}
+							</label>
+							<input
+								type="email"
+								id="email"
+								placeholder="captianawesome@email.com"
+								className={emailError ? "errorBox" : ""}
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+							/>
+						</div>
+						<div>
+							<label className={addressError ? "error" : ""} htmlFor="address">
+								Address: {addressError && addressError}
+							</label>
+							<input
+								type="text"
+								id="address"
+								placeholder="200 Park Avenue
+						Manhattan, New York 10166"
+								className={addressError ? "errorBox" : ""}
+								value={address}
+								onChange={(e) => setAddress(e.target.value)}
+							/>
+						</div>
+					</div>
+					<div className="rowsDiv">
+						<div>
+							<label className={phoneError ? "error" : ""} htmlFor="phone">
+								Phone: {phoneError && phoneError}
+							</label>
+							<input
+								type="tel"
+								id="phone"
+								placeholder="555-867-5309"
+								className={phoneError ? "errorBox" : ""}
+								value={phone}
+								onChange={(e) => setPhone(e.target.value)}
+							/>
+						</div>
+						<div>
+							<p className="bestContact" htmlFor="phone">
+								Choose contact method:
+							</p>
+							<label htmlFor="contactPhone">Phone</label>
+							<input
+								name="bestContact"
+								type="radio"
+								id="contactPhone"
+								checked={contactMethod === "phone" ? true : false}
+								value={phone}
+								onChange={(e) => setContactMethod("phone")}
+							/>
+							<label htmlFor="contactEmail">Email</label>
+							<input
+								name="bestContact"
+								type="radio"
+								id="contactEmail"
+								checked={contactMethod === "email" ? true : false}
+								value={email}
+								onChange={(e) => setContactMethod("email")}
+							/>
+							<label htmlFor="contactAddress">Address</label>
+							<input
+								name="bestContact"
+								type="radio"
+								id="contactAddress"
+								checked={contactMethod === "address" ? true : false}
+								value={address}
+								onChange={(e) => setContactMethod("address")}
+							/>
+						</div>
+					</div>
 				</div>
 				<div>
-					<label className={lastNameError ? "error" : ""} htmlFor="lastName">
-						Last Name {lastNameError && lastNameError}
-					</label>
-					<input
-						type="text"
-						id="lastName"
-						placeholder="ex. Doe"
-						className={lastNameError ? "errorBox" : ""}
-						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
-					/>
-				</div>
-				<div>
-					<label className={emailError ? "error" : ""} htmlFor="email">
-						Email {emailError && emailError}
-					</label>
-					<input
-						type="email"
-						id="email"
-						placeholder="ex. johndoe@example.com"
-						className={emailError ? "errorBox" : ""}
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-				</div>
-				<div>
-					<label className={usernameError ? "error" : ""} htmlFor="username">
-						Username {usernameError && usernameError}
-					</label>
-					<input
-						type="text"
-						id="username"
-						placeholder="ex. JDoe12"
-						className={usernameError ? "errorBox" : ""}
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-					/>
-				</div>
-				<div>
-					<label className={passwordError ? "error" : ""} htmlFor="password">
-						Password {passwordError && passwordError}
-					</label>
-					<input
-						type="password"
-						id="password"
-						placeholder="Enter Your Password"
-						className={passwordError ? "errorBox" : ""}
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</div>
-				<div>
-					<label className={confirmError ? "error" : ""} htmlFor="confirm">
+					{/* <label className={confirmError ? "error" : ""} htmlFor="confirm">
 						Confirm Password {confirmError && confirmError}
 					</label>
 					<input
 						type="password"
 						id="confirm"
-						placeholder="Confirm Your Password"
+						placeholder=""
 						className={confirmError ? "errorBox" : ""}
 						value={confirm}
 						onChange={(e) => setConfirm(e.target.value)}
-					/>
+					/> */}
 				</div>
 				<div>
 					<label className={websiteError ? "error" : ""} htmlFor="website">
