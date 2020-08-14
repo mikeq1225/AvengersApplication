@@ -1,6 +1,6 @@
 .formBox {
 	max-width: 1200px;
-	margin: auto;
+	margin: 5rem auto;
 	display: grid;
 	grid-template-columns: 1fr;
 	justify-items: center;
@@ -24,7 +24,9 @@ h1 {
 }
 
 .formBox div.powersDiv,
-.formBox div.experienceDiv {
+.formBox div.experienceDiv,
+.formBox div.submitDiv,
+.formBox div.essayDiv {
 	padding: 2rem;
 }
 
@@ -72,7 +74,8 @@ label {
 	margin: 0 1rem 0 0;
 }
 
-input {
+input,
+textarea {
 	flex-grow: 2;
 	margin: 0 2rem 0 0;
 	font-size: 2rem;
@@ -86,19 +89,12 @@ select {
 	font-size: 2rem;
 }
 
-button {
-	font-size: 25px;
-	/* align-self: center; */
-	/* width: 200px; */
-	border-radius: 10px;
-	cursor: pointer;
-}
-
 .error {
 	color: red;
 }
 
-.errorBox {
+.errorBox,
+.formBox div.experienceDiv.errorBox {
 	border: 2px solid red;
 }
 
@@ -111,8 +107,4 @@ button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-a {
-	margin-top: 50px;
 }

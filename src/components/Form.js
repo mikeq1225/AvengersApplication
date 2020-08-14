@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import validator from "validator"
 import "../styles/Form.css"
 import { addHero } from "../actions/heros"
-import axios from "axios"
+// import axios from "axios"
 
 export default (props) => {
 	const [firstName, setFirstName] = useState("")
@@ -18,10 +18,12 @@ export default (props) => {
 	const [gender, setGender] = useState("noChoice")
 	const [powers, setPowers] = useState([])
 	const [harmedInnocents, setHarmedInnocents] = useState("no")
-	const [anonymous, setAnonymous] = useState("no")
+	const [wellKnown, setWellKnown] = useState("no")
 	const [benefitSelf, setBenefitSelf] = useState("no")
 	const [experienceError, setExperienceError] = useState("")
+	const [essay, setEssay] = useState("")
 	const [applicationDate, setApplicationDate] = useState("")
+	const [dateError, setDateError] = useState("")
 
 	const powersCheckboxes = [
 		{
@@ -66,19 +68,23 @@ export default (props) => {
 		},
 	]
 
-	function addToPowers(e) {
-		let checkBoxes = document.querySelectorAll(`input[name=power]:checked`)
-		console.log(checkBoxes)
-		checkBoxes = Array.from(checkBoxes)
-		checkBoxes.map((checkBox) => {
-			console.log(powers)
+	// function addToPowers() {
 
-			setPowers((powers) => [...powers, checkBox.value])
-		})
-	}
+	// }
 
 	function trySubmit(e) {
 		e.preventDefault()
+
+		let checkBoxes = document.querySelectorAll(`input[name=power]:checked`)
+		checkBoxes = Array.from(checkBoxes)
+		let newPowers = []
+		for (let i = 0; i < checkBoxes.length; i++) {
+			newPowers.push(checkBoxes[i].value)
+		}
+		setPowers(newPowers)
+		// checkBoxes.forEach((checkBox) => {
+		// 	setPowers((powers) => [...powers, checkBox.value])
+		// })
 
 		let valid = true
 		if (!validator.isAlpha(firstName, "en-US")) {
@@ -109,16 +115,16 @@ export default (props) => {
 			setPhoneError("")
 		}
 
-		// if (!validator.equals(confirm, phone)) {
-		// 	valid = false
-		// 	setConfirmError(` -- Must match phone`)
-		// } else {
-		// 	setConfirmError("")
-		// }
+		if (applicationDate === "") {
+			valid = false
+			setDateError(` -- Please select a valid date`)
+		} else {
+			setDateError("")
+		}
 
 		if (
 			harmedInnocents === "yes" ||
-			anonymous === "yes" ||
+			wellKnown === "yes" ||
 			benefitSelf === "yes"
 		) {
 			valid = false
@@ -126,7 +132,7 @@ export default (props) => {
 				` -- Sorry, one of the questions you answered in this section disqualifies you`
 			)
 		} else {
-			setExperienceError("no")
+			setExperienceError("")
 		}
 
 		if (valid) {
@@ -140,19 +146,23 @@ export default (props) => {
 				gender,
 				powers,
 				harmedInnocents,
-				anonymous,
+				wellKnown,
 				benefitSelf,
+				essay,
+				applicationDate,
 			}).then(() => {
-				setEmail("")
-				setFirstName("")
-				setLastName("")
-				setAddress("")
-				setContactMethod("phone")
-				setGender("noChoice")
-				setPowers("")
-				setHarmedInnocents("no")
-				setAnonymous("no")
-				setBenefitSelf("no")
+				// setEmail("")
+				// setFirstName("")
+				// setLastName("")
+				// setAddress("")
+				// setContactMethod("phone")
+				// setGender("noChoice")
+				// setPowers("")
+				// setHarmedInnocents("no")
+				// setWellKnown("no")
+				// setBenefitSelf("no")
+				// setEssay("")
+				// setApplicationDate("")
 				props.history.push("/thanks")
 			})
 		}
@@ -299,7 +309,7 @@ export default (props) => {
 								type="checkbox"
 								name={box.name}
 								value={box.value}
-								onClick={(e) => addToPowers(e)}
+								// onClick={() => addToPowers()}
 							></input>
 							<label>{box.label}</label>
 						</div>
@@ -324,14 +334,14 @@ export default (props) => {
 						</select>
 					</div>
 					<div className="rowsDiv">
-						<label htmlFor="anonymous">
+						<label htmlFor="wellKnown">
 							Does anyone outside of your family know about your abilities?
 						</label>
 						<select
-							name="anonymous"
-							id="anonymous"
+							name="wellKnown"
+							id="wellKnown"
 							defaultValue="no"
-							onChange={(e) => setAnonymous(e.target.value)}
+							onChange={(e) => setWellKnown(e.target.value)}
 						>
 							<option value="no">No</option>
 							<option value="yes">Yes</option>
@@ -339,7 +349,7 @@ export default (props) => {
 					</div>
 					<div className="rowsDiv">
 						<label htmlFor="benefitSelf">
-							Are you applying in hopes to benefit yourself?
+							Are you applying in hopes of benefiting yourself?
 						</label>
 						<select
 							name="benefitSelf"
@@ -354,8 +364,30 @@ export default (props) => {
 				</div>
 				<div className="essayDiv">
 					<p>Essay</p>
+					<label htmlFor="essay">{`Why do you want to join? (optional)`}</label>
+					<textarea
+						name="essay"
+						id="essay"
+						rows={4}
+						value={essay}
+						placeholder="Tell us about yourself. Don't be afraid to be creative."
+						onChange={(e) => setEssay(e.target.value)}
+					></textarea>
 				</div>
-				<button type="submit">Submit</button>
+				<div className="submitDiv">
+					<label htmlFor="applicationDate" className={dateError ? "error" : ""}>
+						Today's date: {dateError && dateError}
+					</label>
+					<input
+						type="date"
+						name="applicationDate"
+						id="applicationDate"
+						value={applicationDate}
+						className={dateError ? "errorBox" : ""}
+						onChange={(e) => setApplicationDate(e.target.value)}
+					></input>
+					<button type="submit">Submit</button>
+				</div>
 			</form>
 		</div>
 	)
