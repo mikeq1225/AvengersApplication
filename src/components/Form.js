@@ -12,7 +12,6 @@ export default (props) => {
 	const [email, setEmail] = useState("")
 	const [emailError, setEmailError] = useState("")
 	const [address, setAddress] = useState("")
-	const [addressError, setAddressError] = useState("")
 	const [phone, setPhone] = useState("")
 	const [phoneError, setPhoneError] = useState("")
 	const [contactMethod, setContactMethod] = useState("phone")
@@ -21,20 +20,63 @@ export default (props) => {
 	const [websiteError, setWebsiteError] = useState("")
 	const [count, setCount] = useState("")
 
+	const powersCheckboxes = [
+		{
+			name: "Flight",
+			key: "Flight",
+			label: "Flight",
+		},
+		{
+			name: "Invisibility",
+			key: "Invisibility",
+			label: "Invisibility",
+		},
+		{
+			name: "Super Strength",
+			key: "Super Strength",
+			label: "Super Strength",
+		},
+		{
+			name: "X-Ray Vision",
+			key: "X-Ray Vision",
+			label: "X-Ray Vision",
+		},
+		{
+			name: "Super Flexibility",
+			key: "Super Flexibility",
+			label: "Super Flexibility",
+		},
+		{
+			name: "Shape shifting",
+			key: "Shape shifting",
+			label: "Shape shifting",
+		},
+		{
+			name: "Super Speed",
+			key: "Super Speed",
+			label: "Super Speed",
+		},
+		{
+			name: "Telekinesis",
+			key: "Telekinesis",
+			label: "Telekinesis",
+		},
+	]
+
 	function trySubmit(e) {
 		e.preventDefault()
 
 		let valid = true
 		if (!validator.isAlpha(firstName, "en-US")) {
 			valid = false
-			setFirstNameError(` -- Can't be blank & can only contain letters`)
+			setFirstNameError(` -- Required - can only contain letters`)
 		} else {
 			setFirstNameError("")
 		}
 
 		if (!validator.isAlpha(lastName, "en-US")) {
 			valid = false
-			setLastNameError(` -- Can't be blank & can only contain letters`)
+			setLastNameError(` -- Required - can only contain letters`)
 		} else {
 			setLastNameError("")
 		}
@@ -46,16 +88,9 @@ export default (props) => {
 			setEmailError("")
 		}
 
-		if (!validator.isAlphanumeric(address, "en-US")) {
+		if (!validator.isMobilePhone(phone, "en-US")) {
 			valid = false
-			setAddressError(` -- Can't be blank or have special characters`)
-		} else {
-			setAddressError("")
-		}
-
-		if (!validator.isAlphanumeric(phone, "en-US")) {
-			valid = false
-			setPhoneError(` -- Can't be blank`)
+			setPhoneError(` -- Enter phone number`)
 		} else {
 			setPhoneError("")
 		}
@@ -67,12 +102,12 @@ export default (props) => {
 		// 	setConfirmError("")
 		// }
 
-		if (!validator.isURL(website)) {
-			valid = false
-			setWebsiteError(` -- Must be a valid website address`)
-		} else {
-			setWebsiteError("")
-		}
+		// if (!validator.isURL(website)) {
+		// 	valid = false
+		// 	setWebsiteError(` -- Must be a valid website address`)
+		// } else {
+		// 	setWebsiteError("")
+		// }
 
 		if (valid) {
 			addHero({
@@ -80,8 +115,17 @@ export default (props) => {
 				lastName,
 				email,
 				address,
-				website,
+				phone,
+				contactMethod,
+				gender,
 			}).then(() => {
+				setEmail("")
+				setWebsite("")
+				setFirstName("")
+				setLastName("")
+				setAddress("")
+				setContactMethod("")
+				setGender("")
 				props.history.push("/thanks")
 			})
 		}
@@ -91,33 +135,6 @@ export default (props) => {
 			setCount(resp.data.length)
 		})
 	}, [count])
-
-	// const card = {
-	// 	suits: ["clubs", "spades", "hearts", "diamonds"],
-	// 	faces: [2, 3, 4, 5, 6, 7, 8, 9, 10],
-	// }
-	// let deck = []
-	// const cards = card.suits.map((suit) => {
-	// 	return card.faces.map((face) => {
-	// 		return deck.push(face + " " + suit)
-	// 	})
-	// })
-
-	// console.log(deck)
-	// console.log(cards)
-
-	// function makeDeck(card) {
-	// 	let cards = []
-	// 	card.suits.map((suit) => {
-	// 		return card.faces.map((face) => {
-	// 			cards.push(face + " " + suit)
-	// 			return cards
-	// 		})
-	// 	})
-	// 	console.log(cards)
-	// }
-
-	// makeDeck(card)
 
 	return (
 		<div id="avengersApplication">
@@ -174,15 +191,12 @@ export default (props) => {
 							/>
 						</div>
 						<div>
-							<label className={addressError ? "error" : ""} htmlFor="address">
-								Address: {addressError && addressError}
-							</label>
+							<label htmlFor="address">Address:</label>
 							<input
 								type="text"
 								id="address"
 								placeholder="200 Park Avenue
 						Manhattan, New York 10166"
-								className={addressError ? "errorBox" : ""}
 								value={address}
 								onChange={(e) => setAddress(e.target.value)}
 							/>
@@ -235,8 +249,29 @@ export default (props) => {
 							/>
 						</div>
 					</div>
+					<div className="rowsDiv">
+						<label htmlFor="gender">Gender:</label>
+						<select
+							name="gender"
+							id="gender"
+							onChange={(e) => setGender(e.target.value)}
+						>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+							<option value="other">Other</option>
+							<option value="noChoice">Choose not to answer</option>
+						</select>
+					</div>
 				</div>
-				<div>
+				<div className="powersDiv">
+					<p>Super Powers</p>
+					<h2>Check all that apply</h2>
+					{powersCheckboxes.map((box, i) => (
+						<div key={box.key + i}>
+							<input type="checkbox" name={box.name} value={box.value}></input>
+							<label>{box.label}</label>
+						</div>
+					))}
 					{/* <label className={confirmError ? "error" : ""} htmlFor="confirm">
 						Confirm Password {confirmError && confirmError}
 					</label>
