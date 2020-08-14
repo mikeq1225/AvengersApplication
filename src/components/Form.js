@@ -15,53 +15,67 @@ export default (props) => {
 	const [phone, setPhone] = useState("")
 	const [phoneError, setPhoneError] = useState("")
 	const [contactMethod, setContactMethod] = useState("phone")
-	const [gender, setGender] = useState("")
-	const [website, setWebsite] = useState("")
-	const [websiteError, setWebsiteError] = useState("")
-	const [count, setCount] = useState("")
+	const [gender, setGender] = useState("noChoice")
+	const [powers, setPowers] = useState([])
+	const [harmedInnocents, setHarmedInnocents] = useState("no")
+	const [anonymous, setAnonymous] = useState("no")
+	const [benefitSelf, setBenefitSelf] = useState("no")
+	const [experienceError, setExperienceError] = useState("")
+	const [applicationDate, setApplicationDate] = useState("")
 
 	const powersCheckboxes = [
 		{
-			name: "Flight",
-			key: "Flight",
+			name: "power",
+			value: "Flight",
 			label: "Flight",
 		},
 		{
-			name: "Invisibility",
-			key: "Invisibility",
+			name: "power",
+			value: "Invisibility",
 			label: "Invisibility",
 		},
 		{
-			name: "Super Strength",
-			key: "Super Strength",
+			name: "power",
+			value: "Super Strength",
 			label: "Super Strength",
 		},
 		{
-			name: "X-Ray Vision",
-			key: "X-Ray Vision",
+			name: "power",
+			value: "X-Ray Vision",
 			label: "X-Ray Vision",
 		},
 		{
-			name: "Super Flexibility",
-			key: "Super Flexibility",
+			name: "power",
+			value: "Super Flexibility",
 			label: "Super Flexibility",
 		},
 		{
-			name: "Shape shifting",
-			key: "Shape shifting",
-			label: "Shape shifting",
+			name: "power",
+			value: "Shape Shifting",
+			label: "Shape Shifting",
 		},
 		{
-			name: "Super Speed",
-			key: "Super Speed",
+			name: "power",
+			value: "Super Speed",
 			label: "Super Speed",
 		},
 		{
-			name: "Telekinesis",
-			key: "Telekinesis",
+			name: "power",
+			value: "Telekinesis",
 			label: "Telekinesis",
 		},
 	]
+
+	function addToPowers(e) {
+		let checkBoxes = document.querySelectorAll(`input[name=power]:checked`)
+		console.log(checkBoxes)
+		checkBoxes = Array.from(checkBoxes)
+		checkBoxes.map((checkBox) => {
+			console.log(powers)
+
+			setPowers((powers) => [...powers, checkBox.value])
+		})
+	}
 
 	function trySubmit(e) {
 		e.preventDefault()
@@ -102,12 +116,18 @@ export default (props) => {
 		// 	setConfirmError("")
 		// }
 
-		// if (!validator.isURL(website)) {
-		// 	valid = false
-		// 	setWebsiteError(` -- Must be a valid website address`)
-		// } else {
-		// 	setWebsiteError("")
-		// }
+		if (
+			harmedInnocents === "yes" ||
+			anonymous === "yes" ||
+			benefitSelf === "yes"
+		) {
+			valid = false
+			setExperienceError(
+				` -- Sorry, one of the questions you answered in this section disqualifies you`
+			)
+		} else {
+			setExperienceError("no")
+		}
 
 		if (valid) {
 			addHero({
@@ -118,23 +138,29 @@ export default (props) => {
 				phone,
 				contactMethod,
 				gender,
+				powers,
+				harmedInnocents,
+				anonymous,
+				benefitSelf,
 			}).then(() => {
 				setEmail("")
-				setWebsite("")
 				setFirstName("")
 				setLastName("")
 				setAddress("")
-				setContactMethod("")
-				setGender("")
+				setContactMethod("phone")
+				setGender("noChoice")
+				setPowers("")
+				setHarmedInnocents("no")
+				setAnonymous("no")
+				setBenefitSelf("no")
 				props.history.push("/thanks")
 			})
 		}
 	}
-	useEffect(() => {
-		axios.get("/heros").then((resp) => {
-			setCount(resp.data.length)
-		})
-	}, [count])
+
+	// useEffect(() => {
+	// 	addToPowers()
+	// }, [])
 
 	return (
 		<div id="avengersApplication">
@@ -218,7 +244,7 @@ export default (props) => {
 						</div>
 						<div>
 							<p className="bestContact" htmlFor="phone">
-								Choose contact method:
+								Prefer contact method:
 							</p>
 							<label htmlFor="contactPhone">Phone</label>
 							<input
@@ -254,12 +280,13 @@ export default (props) => {
 						<select
 							name="gender"
 							id="gender"
+							defaultValue="noChoice"
 							onChange={(e) => setGender(e.target.value)}
 						>
-							<option value="male">Male</option>
 							<option value="female">Female</option>
-							<option value="other">Other</option>
-							<option value="noChoice">Choose not to answer</option>
+							<option value="male">Male</option>
+							<option value="non-binary">Non-Binary</option>
+							<option value="noChoice">Decline to answer</option>
 						</select>
 					</div>
 				</div>
@@ -267,35 +294,66 @@ export default (props) => {
 					<p>Super Powers</p>
 					<h2>Check all that apply</h2>
 					{powersCheckboxes.map((box, i) => (
-						<div key={box.key + i}>
-							<input type="checkbox" name={box.name} value={box.value}></input>
+						<div key={box.name + i}>
+							<input
+								type="checkbox"
+								name={box.name}
+								value={box.value}
+								onClick={(e) => addToPowers(e)}
+							></input>
 							<label>{box.label}</label>
 						</div>
 					))}
-					{/* <label className={confirmError ? "error" : ""} htmlFor="confirm">
-						Confirm Password {confirmError && confirmError}
-					</label>
-					<input
-						type="password"
-						id="confirm"
-						placeholder=""
-						className={confirmError ? "errorBox" : ""}
-						value={confirm}
-						onChange={(e) => setConfirm(e.target.value)}
-					/> */}
 				</div>
-				<div>
-					<label className={websiteError ? "error" : ""} htmlFor="website">
-						Website Address {websiteError && websiteError}
-					</label>
-					<input
-						type="url"
-						id="website"
-						placeholder="Enter a Website URL"
-						className={websiteError ? "errorBox" : ""}
-						value={website}
-						onChange={(e) => setWebsite(e.target.value)}
-					/>
+				<div className={`experienceDiv ${experienceError ? "errorBox" : ""}`}>
+					<p className={experienceError ? "error" : ""}>
+						Experience {experienceError && experienceError}
+					</p>
+					<div className="rowsDiv">
+						<label htmlFor="harmedInnocents">
+							Have you hurt any innocent people or animals?{" "}
+						</label>
+						<select
+							name="harmedInnocents"
+							id="harmedInnocents"
+							defaultValue="no"
+							onChange={(e) => setHarmedInnocents(e.target.value)}
+						>
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div className="rowsDiv">
+						<label htmlFor="anonymous">
+							Does anyone outside of your family know about your abilities?
+						</label>
+						<select
+							name="anonymous"
+							id="anonymous"
+							defaultValue="no"
+							onChange={(e) => setAnonymous(e.target.value)}
+						>
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div className="rowsDiv">
+						<label htmlFor="benefitSelf">
+							Are you applying in hopes to benefit yourself?
+						</label>
+						<select
+							name="benefitSelf"
+							id="benefitSelf"
+							defaultValue="no"
+							onChange={(e) => setBenefitSelf(e.target.value)}
+						>
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+				</div>
+				<div className="essayDiv">
+					<p>Essay</p>
 				</div>
 				<button type="submit">Submit</button>
 			</form>
