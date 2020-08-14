@@ -1,3 +1,23 @@
 {
-	"heros": []
+  "heros": [
+    {
+      "firstName": "Walter",
+      "lastName": "White",
+      "email": "heisenberg@email.com",
+      "address": "23we etitgdg, dfdsgho 8999",
+      "phone": "2623453322",
+      "contactMethod": "phone",
+      "id": 1
+    },
+    {
+      "firstName": "Sally",
+      "lastName": "Smith",
+      "email": "smith@email.com",
+      "address": "200 Park Avenue, NY NY",
+      "phone": "555-867-5309",
+      "contactMethod": "email",
+      "gender": "female",
+      "id": 2
+    }
+  ]
 }

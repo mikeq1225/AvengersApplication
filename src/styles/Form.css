@@ -10,23 +10,31 @@ h1 {
 	text-align: center;
 }
 
-.formBox div.personalDiv {
+.formBox div.personalDiv,
+.formBox div.powersDiv {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid black;
 	position: relative;
+	margin: 1rem 0;
 }
 
-.formBox div.personalDiv > p {
+.formBox div.personalDiv > p,
+.formBox div.powersDiv > p {
 	margin: 0;
 	padding: 5px;
 	width: fit-content;
-	font-size: 2rem;
+	font-size: 2.1rem;
 	background: white;
 	position: absolute;
-	top: -16.5px;
+	top: -17px;
 	left: 10px;
+}
+
+h2 {
+	font-size: 2rem;
+	text-transform: capitalize;
 }
 
 .formBox div.personalDiv .rowsDiv {
@@ -59,6 +67,10 @@ input {
 	/* outline: none; */
 }
 
+select {
+	font-size: 2rem;
+}
+
 button {
 	font-size: 25px;
 	/* align-self: center; */
@@ -84,11 +96,6 @@ button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-h2 {
-	text-align: center;
-	color: white;
 }
 
 a {
