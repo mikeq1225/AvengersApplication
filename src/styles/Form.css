@@ -3,6 +3,7 @@
 	margin: auto;
 	display: grid;
 	grid-template-columns: 1fr;
+	justify-items: center;
 }
 
 h1 {
@@ -11,7 +12,9 @@ h1 {
 }
 
 .formBox div.personalDiv,
-.formBox div.powersDiv {
+.formBox div.powersDiv,
+.formBox div.experienceDiv,
+.formBox div.essayDiv {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -20,8 +23,15 @@ h1 {
 	margin: 1rem 0;
 }
 
+.formBox div.powersDiv,
+.formBox div.experienceDiv {
+	padding: 2rem;
+}
+
 .formBox div.personalDiv > p,
-.formBox div.powersDiv > p {
+.formBox div.powersDiv > p,
+.formBox div.experienceDiv > p,
+.formBox div.essayDiv > p {
 	margin: 0;
 	padding: 5px;
 	width: fit-content;
@@ -37,9 +47,14 @@ h2 {
 	text-transform: capitalize;
 }
 
-.formBox div.personalDiv .rowsDiv {
+.formBox div.personalDiv .rowsDiv,
+.formBox div.experienceDiv .rowsDiv {
 	display: flex;
 	margin: 3rem 2rem;
+}
+
+.formBox div.experienceDiv .rowsDiv {
+	margin: 1.5rem 2rem;
 }
 
 .formBox div.personalDiv .rowsDiv div {
