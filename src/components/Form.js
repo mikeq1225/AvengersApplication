@@ -68,13 +68,7 @@ export default (props) => {
 		},
 	]
 
-	// function addToPowers() {
-
-	// }
-
-	function trySubmit(e) {
-		e.preventDefault()
-
+	function addToPowers() {
 		let checkBoxes = document.querySelectorAll(`input[name=power]:checked`)
 		checkBoxes = Array.from(checkBoxes)
 		let newPowers = []
@@ -82,9 +76,10 @@ export default (props) => {
 			newPowers.push(checkBoxes[i].value)
 		}
 		setPowers(newPowers)
-		// checkBoxes.forEach((checkBox) => {
-		// 	setPowers((powers) => [...powers, checkBox.value])
-		// })
+	}
+
+	function trySubmit(e) {
+		e.preventDefault()
 
 		let valid = true
 		if (!validator.isAlpha(firstName, "en-US")) {
@@ -309,7 +304,7 @@ export default (props) => {
 								type="checkbox"
 								name={box.name}
 								value={box.value}
-								// onClick={() => addToPowers()}
+								onClick={() => addToPowers()}
 							></input>
 							<label>{box.label}</label>
 						</div>
