@@ -69,9 +69,17 @@ h2 {
 	display: flex;
 	align-items: center;
 }
+
 .formBox div.personalDiv .rowsDiv div p {
 	font-size: 2rem;
 	margin: 0 1rem 0 0;
+}
+
+.formBox div.personalDiv .rowsDiv div input#contactPhone,
+.formBox div.personalDiv .rowsDiv div input#contactEmail,
+.formBox div.personalDiv .rowsDiv div input#contactAddress {
+	margin: 0 0.5rem;
+	flex-grow: 0;
 }
 
 label {

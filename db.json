@@ -39,6 +39,25 @@
       "essay": "I don't know what to say",
       "applicationDate": "2020-08-14",
       "id": 2
+    },
+    {
+      "firstName": "Ann",
+      "lastName": "Mahon",
+      "email": "anniemahon@mahon.com",
+      "address": "123 Main Street, USA Town, WI, 12345",
+      "phone": "555-444-3333",
+      "contactMethod": "phone",
+      "gender": "female",
+      "powers": [
+        "X-Ray Vision",
+        "Super Speed"
+      ],
+      "harmedInnocents": "no",
+      "wellKnown": "no",
+      "benefitSelf": "no",
+      "essay": "",
+      "applicationDate": "2020-08-15",
+      "id": 3
     }
   ]
 }

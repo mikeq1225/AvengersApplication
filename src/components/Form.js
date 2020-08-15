@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import validator from "validator"
 import "../styles/Form.css"
 import { addHero } from "../actions/heros"
-// import axios from "axios"
 
 export default (props) => {
 	const [firstName, setFirstName] = useState("")
@@ -151,10 +150,6 @@ export default (props) => {
 		}
 	}
 
-	// useEffect(() => {
-	// 	addToPowers()
-	// }, [])
-
 	return (
 		<div id="avengersApplication">
 			<h1>Avengers Application</h1>
@@ -239,7 +234,6 @@ export default (props) => {
 							<p className="bestContact" htmlFor="phone">
 								Prefer contact method:
 							</p>
-							<label htmlFor="contactPhone">Phone</label>
 							<input
 								name="bestContact"
 								type="radio"
@@ -248,7 +242,7 @@ export default (props) => {
 								value={phone}
 								onChange={(e) => setContactMethod("phone")}
 							/>
-							<label htmlFor="contactEmail">Email</label>
+							<label htmlFor="contactPhone">Phone</label>
 							<input
 								name="bestContact"
 								type="radio"
@@ -257,7 +251,7 @@ export default (props) => {
 								value={email}
 								onChange={(e) => setContactMethod("email")}
 							/>
-							<label htmlFor="contactAddress">Address</label>
+							<label htmlFor="contactEmail">Email</label>
 							<input
 								name="bestContact"
 								type="radio"
@@ -266,6 +260,7 @@ export default (props) => {
 								value={address}
 								onChange={(e) => setContactMethod("address")}
 							/>
+							<label htmlFor="contactAddress">Address</label>
 						</div>
 					</div>
 					<div className="rowsDiv">
