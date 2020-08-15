@@ -31,6 +31,20 @@
 	padding: 2rem;
 }
 
+.formBox div.powersDiv ul {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
+}
+
+.formBox div.powersDiv ul li {
+	margin: 0 0 0 3rem;
+}
+
+.formBox div.powersDiv ul li input {
+	flex-grow: 0;
+}
+
 .formBox div.personalDiv > p,
 .formBox div.powersDiv > p,
 .formBox div.experienceDiv > p,

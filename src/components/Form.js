@@ -68,6 +68,56 @@ export default (props) => {
 			value: "Telekinesis",
 			label: "Telekinesis",
 		},
+		{
+			name: "power",
+			value: "Durability",
+			label: "Durability",
+		},
+		{
+			name: "power",
+			value: "Regeneration",
+			label: "Regeneration",
+		},
+		{
+			name: "power",
+			value: "Teleportation",
+			label: "Teleportation",
+		},
+		{
+			name: "power",
+			value: "Prophecy",
+			label: "Prophecy",
+		},
+		{
+			name: "power",
+			value: "Time Travel",
+			label: "Time Travel",
+		},
+		{
+			name: "power",
+			value: "Super Intelligence",
+			label: "Super Intelligence",
+		},
+		{
+			name: "power",
+			value: "Mind-Control",
+			label: "Mind-Control",
+		},
+		{
+			name: "power",
+			value: "Immortality",
+			label: "Immortality",
+		},
+		{
+			name: "power",
+			value: "Indomitable Will",
+			label: "Indomitable Will",
+		},
+		{
+			name: "power",
+			value: "Quantum Manipulation",
+			label: "Quantum Manipulation",
+		},
 	]
 
 	function addToPowers() {
@@ -342,7 +392,7 @@ export default (props) => {
 						</div>
 						<div>
 							<p className="bestContact" htmlFor="phone">
-								Prefer contact method:
+								Preferred contact method:
 							</p>
 							<input
 								name="bestContact"
@@ -377,17 +427,19 @@ export default (props) => {
 				<div className="powersDiv">
 					<p>Super Powers</p>
 					<h2>Check all that apply</h2>
-					{powersCheckboxes.map((box, i) => (
-						<div key={box.name + i}>
-							<input
-								type="checkbox"
-								name={box.name}
-								value={box.value}
-								onClick={() => addToPowers()}
-							></input>
-							<label>{box.label}</label>
-						</div>
-					))}
+					<ul>
+						{powersCheckboxes.map((box, i) => (
+							<li key={box.name + i}>
+								<input
+									type="checkbox"
+									name={box.name}
+									value={box.value}
+									onClick={() => addToPowers()}
+								></input>
+								<label>{box.label}</label>
+							</li>
+						))}
+					</ul>
 				</div>
 				<div className={`experienceDiv ${experienceError ? "errorBox" : ""}`}>
 					<p className={experienceError ? "error" : ""}>
