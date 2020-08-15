@@ -3,57 +3,22 @@
     {
       "firstName": "Walter",
       "lastName": "White",
-      "email": "mikedq1225@gmail.com",
-      "address": "23we etitgdg, dfdsgho 8999",
-      "phone": "(814) 554-0389",
+      "email": "heisenberg@email.com",
+      "address": "200 Park Avenue, NY NY",
+      "phone": "555-867-5309",
       "contactMethod": "email",
       "gender": "male",
-      "powers": [],
+      "powers": [
+        "Invisibility",
+        "Super Strength",
+        "Super Flexibility"
+      ],
+      "harmedInnocents": "no",
+      "wellKnown": "no",
+      "benefitSelf": "no",
+      "essay": "I make the blue stuff!",
+      "applicationDate": "2020-08-14",
       "id": 1
-    },
-    {
-      "firstName": "Walter",
-      "lastName": "White",
-      "email": "mikedq1225@gmail.com",
-      "address": "23we etitgdg, dfdsgho 8999",
-      "phone": "(814) 554-0389",
-      "contactMethod": "phone",
-      "gender": "non-binary",
-      "powers": [],
-      "id": 2
-    },
-    {
-      "firstName": "Walter",
-      "lastName": "White",
-      "email": "heisenberg@email.com",
-      "address": "23we etitgdg, dfdsgho 8999",
-      "phone": "(814) 554-0389",
-      "contactMethod": "phone",
-      "gender": "non-binary",
-      "powers": [],
-      "id": 3
-    },
-    {
-      "firstName": "Walter",
-      "lastName": "White",
-      "email": "mikedq1225@gmail.com",
-      "address": "200 Park Avenue, NY NY",
-      "phone": "(814) 554-0389",
-      "contactMethod": "phone",
-      "gender": "non-binary",
-      "powers": [],
-      "id": 4
-    },
-    {
-      "firstName": "Walter",
-      "lastName": "White",
-      "email": "linksy@email.com",
-      "address": "23we etitgdg, dfdsgho 8999",
-      "phone": "555-867-5309",
-      "contactMethod": "address",
-      "gender": "noChoice",
-      "powers": [],
-      "id": 5
     }
   ]
 }

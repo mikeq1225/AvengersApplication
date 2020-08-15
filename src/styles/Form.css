@@ -1,14 +1,15 @@
 .formBox {
 	max-width: 1200px;
-	margin: auto;
+	margin: 5rem auto;
 	display: grid;
 	grid-template-columns: 1fr;
 	justify-items: center;
 }
 
-h1 {
+#avengersApplication h1 {
 	font-size: 3rem;
 	text-align: center;
+	color: black;
 }
 
 .formBox div.personalDiv,
@@ -18,13 +19,15 @@ h1 {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	border: 1px solid black;
+	border: 1px solid #626eda;
 	position: relative;
 	margin: 1rem 0;
 }
 
 .formBox div.powersDiv,
-.formBox div.experienceDiv {
+.formBox div.experienceDiv,
+.formBox div.submitDiv,
+.formBox div.essayDiv {
 	padding: 2rem;
 }
 
@@ -40,6 +43,10 @@ h1 {
 	position: absolute;
 	top: -17px;
 	left: 10px;
+}
+
+.formBox div.essayDiv > label {
+	margin: 0 0 1rem 0;
 }
 
 h2 {
@@ -72,47 +79,30 @@ label {
 	margin: 0 1rem 0 0;
 }
 
-input {
+input,
+textarea {
 	flex-grow: 2;
 	margin: 0 2rem 0 0;
 	font-size: 2rem;
-	/* padding-left: 8px; */
-	/* background-color: rgb(59, 59, 59); */
-	/* border: 1px solid white; */
 	/* outline: none; */
+	outline-color: #626eda;
+	color: #626eda;
 }
 
 select {
 	font-size: 2rem;
 }
 
-button {
-	font-size: 25px;
-	/* align-self: center; */
-	/* width: 200px; */
-	border-radius: 10px;
-	cursor: pointer;
-}
-
 .error {
 	color: red;
 }
 
-.errorBox {
+.errorBox,
+.formBox div.experienceDiv.errorBox {
 	border: 2px solid red;
 }
 
-.thankYou {
-	width: 1000px;
-	height: 800px;
-	margin: auto;
-	background-color: rgb(59, 59, 59);
-	padding: 30px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-a {
-	margin-top: 50px;
+.formBox div.submitDiv button {
+	background: #626eda;
+	color: white;
 }

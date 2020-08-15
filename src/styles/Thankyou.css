@@ -1,0 +1,28 @@
+.thankYou {
+	height: 100vh;
+	background: url("/assets/newAvengers.jpg") no-repeat center top/ cover;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+h2 {
+	color: white;
+	font-size: 3.5rem;
+	margin: 0;
+}
+
+a button {
+	font-size: 4rem;
+	margin: 2rem 0 0 0;
+	background: #ed1d24;
+	color: white;
+	transition: all 0.5s ease;
+}
+
+a button:hover {
+	background: black;
+	color: white;
+	transition: all 0.5s ease;
+}

@@ -1,6 +1,7 @@
 html {
 	box-sizing: border-box;
 	font-size: 10px;
+	color: #361a29;
 }
 
 *,
@@ -21,4 +22,12 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
+}
+
+button {
+	font-size: 2.5rem;
+	border-radius: 10px;
+	cursor: pointer;
+	border: none;
+	padding: 1rem;
 }
