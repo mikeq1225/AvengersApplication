@@ -1,3 +1,48 @@
 {
-	"heros": []
+  "candidates": [
+    {
+      "firstName": "Walter",
+      "lastName": "White",
+      "email": "heisenberg@email.com",
+      "address": "3828 Piermont Dr NE",
+      "city": "Albuquerque",
+      "stateAbbr": "New Mexico",
+      "zipCode": "87111",
+      "phone": "555-867-5309",
+      "contactMethod": "phone",
+      "gender": "male",
+      "powers": [
+        "Super Speed",
+        "Telekinesis"
+      ],
+      "harmedInnocents": "no",
+      "wellKnown": "no",
+      "benefitSelf": "no",
+      "essay": "I make the blue stuff  that makes people forget about everything.",
+      "applicationDate": "2020-08-15",
+      "id": 1
+    },
+    {
+      "firstName": "Lou",
+      "lastName": "Ferrigno",
+      "email": "theRealHulk@email.com",
+      "address": "200 Santa Monica Pier",
+      "city": "Los Angeles",
+      "stateAbbr": "California",
+      "zipCode": "90401",
+      "phone": "555-843-4855",
+      "contactMethod": "phone",
+      "gender": "male",
+      "powers": [
+        "Super Strength",
+        "Shape Shifting"
+      ],
+      "harmedInnocents": "no",
+      "wellKnown": "no",
+      "benefitSelf": "no",
+      "essay": "Don't make me angry. You wouldn't like me when I'm angry",
+      "applicationDate": "2020-08-15",
+      "id": 2
+    }
+  ]
 }

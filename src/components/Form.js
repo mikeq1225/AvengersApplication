@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import validator from "validator"
 import "../styles/Form.css"
-import { addHero } from "../actions/heros"
+import { addCandidate } from "../actions/candidates"
 
 export default (props) => {
 	const [firstName, setFirstName] = useState("")
@@ -133,7 +133,7 @@ export default (props) => {
 		}
 
 		if (valid) {
-			addHero({
+			addCandidate({
 				firstName,
 				lastName,
 				email,
