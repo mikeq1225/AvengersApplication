@@ -146,18 +146,6 @@ export default (props) => {
 				essay,
 				applicationDate,
 			}).then(() => {
-				// setEmail("")
-				// setFirstName("")
-				// setLastName("")
-				// setAddress("")
-				// setContactMethod("phone")
-				// setGender("noChoice")
-				// setPowers("")
-				// setHarmedInnocents("no")
-				// setWellKnown("no")
-				// setBenefitSelf("no")
-				// setEssay("")
-				// setApplicationDate("")
 				props.history.push("/thanks")
 			})
 		}

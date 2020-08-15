@@ -84,8 +84,12 @@ textarea {
 	flex-grow: 2;
 	margin: 0 2rem 0 0;
 	font-size: 2rem;
-	/* outline: none; */
+	padding: 0.5rem;
 	outline-color: #626eda;
+	color: #626eda;
+}
+
+input[type="text"] {
 	color: #626eda;
 }
 

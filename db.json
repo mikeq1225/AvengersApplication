@@ -19,6 +19,26 @@
       "essay": "I make the blue stuff!",
       "applicationDate": "2020-08-14",
       "id": 1
+    },
+    {
+      "firstName": "Sally",
+      "lastName": "Smith",
+      "email": "mikedq1225@gmail.com",
+      "address": "200 Park Avenue, NY NY",
+      "phone": "(814) 554-0389",
+      "contactMethod": "email",
+      "gender": "female",
+      "powers": [
+        "Super Flexibility",
+        "Shape Shifting",
+        "Super Speed"
+      ],
+      "harmedInnocents": "no",
+      "wellKnown": "no",
+      "benefitSelf": "no",
+      "essay": "I don't know what to say",
+      "applicationDate": "2020-08-14",
+      "id": 2
     }
   ]
 }
