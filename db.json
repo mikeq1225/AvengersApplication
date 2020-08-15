@@ -1,3 +1,24 @@
 {
-	"heros": []
+  "heros": [
+    {
+      "firstName": "Walter",
+      "lastName": "White",
+      "email": "heisenberg@email.com",
+      "address": "200 Park Avenue, NY NY",
+      "phone": "555-867-5309",
+      "contactMethod": "email",
+      "gender": "male",
+      "powers": [
+        "Invisibility",
+        "Super Strength",
+        "Super Flexibility"
+      ],
+      "harmedInnocents": "no",
+      "wellKnown": "no",
+      "benefitSelf": "no",
+      "essay": "I make the blue stuff!",
+      "applicationDate": "2020-08-14",
+      "id": 1
+    }
+  ]
 }

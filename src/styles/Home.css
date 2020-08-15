@@ -1,0 +1,28 @@
+.home {
+	height: 100vh;
+	background: url("/assets/shield.jpg") no-repeat center center/ cover;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+h1 {
+	color: white;
+	font-size: 3.5rem;
+	margin: 2rem 0;
+}
+
+.home a button {
+	font-size: 3rem;
+	margin: 0;
+	background: #ed1d24;
+	color: white;
+	transition: all 0.5s ease;
+}
+
+.home a button:hover {
+	background: black;
+	color: #ed1d24;
+	transition: all 0.5s ease;
+}

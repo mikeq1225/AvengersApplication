@@ -1,6 +1,7 @@
 html {
 	box-sizing: border-box;
 	font-size: 10px;
+	color: #361a29;
 }
 
 *,
@@ -27,4 +28,6 @@ button {
 	font-size: 2.5rem;
 	border-radius: 10px;
 	cursor: pointer;
+	border: none;
+	padding: 1rem;
 }
