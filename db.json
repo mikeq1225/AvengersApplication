@@ -1,63 +1,48 @@
 {
-  "heros": [
+  "candidates": [
     {
       "firstName": "Walter",
       "lastName": "White",
       "email": "heisenberg@email.com",
-      "address": "200 Park Avenue, NY NY",
+      "address": "3828 Piermont Dr NE",
+      "city": "Albuquerque",
+      "stateAbbr": "New Mexico",
+      "zipCode": "87111",
       "phone": "555-867-5309",
-      "contactMethod": "email",
+      "contactMethod": "phone",
       "gender": "male",
       "powers": [
-        "Invisibility",
-        "Super Strength",
-        "Super Flexibility"
+        "Super Speed",
+        "Telekinesis"
       ],
       "harmedInnocents": "no",
       "wellKnown": "no",
       "benefitSelf": "no",
-      "essay": "I make the blue stuff!",
-      "applicationDate": "2020-08-14",
+      "essay": "I make the blue stuff  that makes people forget about everything.",
+      "applicationDate": "2020-08-15",
       "id": 1
     },
     {
-      "firstName": "Sally",
-      "lastName": "Smith",
-      "email": "mikedq1225@gmail.com",
-      "address": "200 Park Avenue, NY NY",
-      "phone": "(814) 554-0389",
-      "contactMethod": "email",
-      "gender": "female",
-      "powers": [
-        "Super Flexibility",
-        "Shape Shifting",
-        "Super Speed"
-      ],
-      "harmedInnocents": "no",
-      "wellKnown": "no",
-      "benefitSelf": "no",
-      "essay": "I don't know what to say",
-      "applicationDate": "2020-08-14",
-      "id": 2
-    },
-    {
-      "firstName": "Ann",
-      "lastName": "Mahon",
-      "email": "anniemahon@mahon.com",
-      "address": "123 Main Street, USA Town, WI, 12345",
-      "phone": "555-444-3333",
+      "firstName": "Lou",
+      "lastName": "Ferrigno",
+      "email": "theRealHulk@email.com",
+      "address": "200 Santa Monica Pier",
+      "city": "Los Angeles",
+      "stateAbbr": "California",
+      "zipCode": "90401",
+      "phone": "555-843-4855",
       "contactMethod": "phone",
-      "gender": "female",
+      "gender": "male",
       "powers": [
-        "X-Ray Vision",
-        "Super Speed"
+        "Super Strength",
+        "Shape Shifting"
       ],
       "harmedInnocents": "no",
       "wellKnown": "no",
       "benefitSelf": "no",
-      "essay": "",
+      "essay": "Don't make me angry. You wouldn't like me when I'm angry",
       "applicationDate": "2020-08-15",
-      "id": 3
+      "id": 2
     }
   ]
 }

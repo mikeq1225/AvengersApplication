@@ -58,6 +58,7 @@ h2 {
 .formBox div.experienceDiv .rowsDiv {
 	display: flex;
 	margin: 3rem 2rem;
+	align-items: center;
 }
 
 .formBox div.experienceDiv .rowsDiv {
@@ -88,7 +89,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
 	flex-grow: 2;
 	margin: 0 2rem 0 0;
 	font-size: 2rem;
@@ -101,8 +103,8 @@ input[type="text"] {
 	color: #626eda;
 }
 
-select {
-	font-size: 2rem;
+.formBox div.experienceDiv .rowsDiv select {
+	flex-grow: 0;
 }
 
 .error {
